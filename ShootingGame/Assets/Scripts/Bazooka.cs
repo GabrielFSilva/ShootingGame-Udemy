@@ -8,8 +8,11 @@ public class Bazooka : MonoBehaviour {
 	private AudioSource shootAudioSource;
 	public AudioClip shootClip;
 
-	// Use this for initialization
-	void Start () {
+    public int roundsShot = 0;
+    public int enemiesKilled = 0;
+
+    // Use this for initialization
+    void Start () {
 		shootAudioSource = GetComponent<AudioSource> ();
 	}
 	
@@ -23,5 +26,16 @@ public class Bazooka : MonoBehaviour {
 
 	private void Shoot() {
 		shootAudioSource.PlayOneShot (shootClip);
+        roundsShot++;
+
+        Vector2 dir = crossHair.transform.position;//new Vector2 (crossHair.transform.position.x, crossHair.transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.transform.position, dir);
+
+        if (hit.collider && hit.collider.gameObject != crossHair)
+        {
+            enemiesKilled++;
+            Destroy(hit.collider.gameObject);
+        }
+
 	}
 }

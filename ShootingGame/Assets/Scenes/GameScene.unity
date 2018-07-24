@@ -112,6 +112,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &440589284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 440589285}
+  - component: {fileID: 440589287}
+  - component: {fileID: 440589286}
+  m_Layer: 0
+  m_Name: ScoreText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &440589285
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440589284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -182, y: 121.255005, z: 0}
+  m_LocalScale: {x: 1.0000178, y: 1.0000178, z: 1.0000178}
+  m_Children: []
+  m_Father: {fileID: 1044064956}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -14.869995}
+  m_SizeDelta: {x: 114.100006, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &440589286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440589284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2582996adbdd30144a2e79fdff67f21d, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 2' 23''
+--- !u!222 &440589287
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440589284}
 --- !u!1001 &502937803
 Prefab:
   m_ObjectHideFlags: 0
@@ -321,6 +395,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossHair: {fileID: 1655958591}
   shootClip: {fileID: 8300000, guid: 7e3f932b0e49d204496324e1a9dae20e, type: 3}
+  roundsShot: 0
+  enemiesKilled: 0
 --- !u!82 &783274612
 AudioSource:
   m_ObjectHideFlags: 0
@@ -502,6 +578,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1765829443}
+  - {fileID: 440589285}
   m_Father: {fileID: 1374743703}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1084,16 +1161,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1765829440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.94989, y: 121.13, z: 0}
+  m_LocalPosition: {x: 184.94989, y: 121.255, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1044064956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 184.94989, y: 121.13}
-  m_SizeDelta: {x: 114.1, y: 30}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -57.05011, y: -14.870003}
+  m_SizeDelta: {x: 114.100006, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1941182549
 GameObject:
@@ -1205,6 +1282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textTimerObj: {fileID: 1765829440}
+  textScoreObj: {fileID: 440589284}
+  bazooka: {fileID: 783274609}
 --- !u!4 &1949025342
 Transform:
   m_ObjectHideFlags: 0
