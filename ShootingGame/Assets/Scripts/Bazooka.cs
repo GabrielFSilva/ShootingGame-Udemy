@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bazooka : MonoBehaviour {
 
+    public ParticleSystem muzzleFlashParticle;
 	public GameObject crossHair;
 	private AudioSource shootAudioSource;
 	public AudioClip shootClip;
@@ -31,9 +32,10 @@ public class Bazooka : MonoBehaviour {
 
 	private void Shoot() {
 		shootAudioSource.PlayOneShot (shootClip);
+        muzzleFlashParticle.Emit(1);
         roundsShot++;
 
-        Vector2 dir = crossHair.transform.position;//new Vector2 (crossHair.transform.position.x, crossHair.transform.position.y);
+        Vector2 dir = crossHair.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.transform.position, dir);
 
         if (hit.collider && hit.collider.gameObject != crossHair)
