@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CrossHair : MonoBehaviour {
 
+    public bool paused;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +12,9 @@ public class CrossHair : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (paused)
+            return;
+
 		float h = Input.GetAxis ("Mouse X") / 5f;
 		float v = Input.GetAxis ("Mouse Y") / 5f;
 

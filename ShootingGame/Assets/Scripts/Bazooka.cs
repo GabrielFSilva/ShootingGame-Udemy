@@ -11,6 +11,8 @@ public class Bazooka : MonoBehaviour {
     public int roundsShot = 0;
     public int enemiesKilled = 0;
 
+    public bool paused = false;
+
     // Use this for initialization
     void Start () {
 		shootAudioSource = GetComponent<AudioSource> ();
@@ -18,6 +20,9 @@ public class Bazooka : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (paused)
+            return;
+
 		transform.LookAt (crossHair.transform);
 
 		if (Input.GetKeyDown (KeyCode.Space))

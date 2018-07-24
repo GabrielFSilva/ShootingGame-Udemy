@@ -8,7 +8,9 @@ public class GameSceneManager : MonoBehaviour {
     //Objects
 	public GameObject textTimerObj;
     public GameObject textScoreObj;
+    public CrossHair crossHair;
     public Bazooka bazooka;
+    public CanvasGroup gameOverPanel;
 
     //Timer
     private Text textTimer;
@@ -29,7 +31,7 @@ public class GameSceneManager : MonoBehaviour {
 	}
 
 	private void TimeCounter() {
-		if (gameTime > 0)
+		if (gameTime >= 0)
 		{
 			timeMinutes = (int)(gameTime / 60);
 			timeSeconds = gameTime % 60;
@@ -40,11 +42,31 @@ public class GameSceneManager : MonoBehaviour {
 		} 
 		else
 		{
-			Debug.Log ("Game Over");
-		}
+            Time.timeScale = 0f;
+            bazooka.paused = true;
+            crossHair.paused = true;
+            gameOverPanel.alpha = 1f;
+            gameOverPanel.interactable = true;
+            gameOverPanel.blocksRaycasts = true;
+
+        }
 	}
 	// Update is called once per frame
 	void Update () {
         textScore.text = bazooka.enemiesKilled.ToString() + " / " + bazooka.roundsShot.ToString();
+    }
+
+    public void RestartAction()
+    {
+        gameTime = 150;
+        Time.timeScale = 1f;
+        bazooka.roundsShot = 0;
+        bazooka.enemiesKilled = 0;
+        bazooka.paused = false;
+        crossHair.paused = false;
+        gameOverPanel.alpha = 0f;
+        gameOverPanel.interactable = false;
+        gameOverPanel.blocksRaycasts = false;
+        TimeCounter();
     }
 }
